@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f4f7;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh; 
+  background-image: url(../img/background1.jpg);
+  background-size: cover;
+}
+
+.container {
+  max-width: 400px; 
+  width: 100%; 
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #539a46;
+  outline: none;
+}
+
+.user-type {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 15px;
+}
+
+.form-check {
+  margin-right: 20px; 
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #539a46;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #84c479;
+}
+
+.account-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.account-link a {
+  color: #539a46;
+  text-decoration: none;
+}
+
+.account-link a:hover {
+  text-decoration: underline;
+}
