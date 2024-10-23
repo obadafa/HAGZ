@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Football Fields</title>
+    <link rel="stylesheet" href="../static/Css/my_football_fields.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1 class="title">My Football Fields</h1>
+    <div class="button-container">
+      <a href="/admin_dashboard" class="back-button">Back to Dashboard</a>
+    </div>
+    <div class="fields-container">
+      {% for football_field in football_fields_array %}
+      <div class="card">
+        <div class="football-field-id" hidden>"{{football_field[0]}}"</div>
+        <img
+          src="../static/img/{{football_field[5]}}"
+          alt="Football Field Image"
+          class="field-img"
+        />
+        <div class="card-body">
+          <h3 class="field-name">{{football_field[2]}}</h3>
+          <p class="location">Location: {{football_field[3]}}</p>
+
+          <div class="football-field-details" style="font-size: 16px">
+            <div class="dis-flex-bet">
+              <div class="dis-flex-center">
+                <i class="margin fa-solid fa-car"> </i>
+                <p>Parking</p>
+              </div>
+              <div class="dis-flex-center">
+                <i class="fa-regular fa-futbol"> </i>
+                <p class="margin">Ball Renting</p>
+              </div>
+            </div>
+            <div class="dis-flex-bet">
+              <div class="dis-flex-center">
+                <i class="margin fa-solid fa-toilet"></i>
+                <p class="">Toilats</p>
+              </div>
+              <div class="dis-flex-center">
+                <i class="fa-solid fa-mug-saucer"> </i>
+                <p class="margin">Cafeteria</p>
+              </div>
+            </div>
+          </div>
+          <a href="{{football_field[4]}}" class="map-link" target="_blank"
+            >View on Map</a
+          >
+        </div>
+      </div>
+      <!-- Add more cards for more football fields -->
+      {% endfor %}
+    </div>
+  </body>
+</html>

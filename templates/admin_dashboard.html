@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../static/Css/admin_dashboard.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Dashboard</h2>
+      <ul>
+        <li><a href="add_football_field">Add Football Field</a></li>
+        <li><a href="my_football_fields">My Football Fields</a></li>
+        <li><a href="admin_reservations">My Reservations</a></li>
+        <li><a href="logout" class="logout">Log Out</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1 class="name_title"></h1>
+      </header>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <script
+          src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"
+        ></script>
+
+        <dotlottie-player
+          src="https://lottie.host/1e433984-acc2-4564-bfc6-07ad301d71d6/WmtEDZOpMQ.json"
+          background="transparent"
+          speed="1"
+          style="width: 400px; height: 400px"
+          loop
+          autoplay
+        ></dotlottie-player>
+      </div>
+    </div>
+    {% if user %}
+    <script>
+      if (localStorage.getItem("login") != "true") {
+        localStorage.setItem("id", "{{ user[0] }}");
+        localStorage.setItem("name", "{{ user[1] }}");
+        localStorage.setItem("email", "{{ user[2] }}");
+        localStorage.setItem("status", "{{ user[4] }}");
+        localStorage.setItem("login", "true");
+      }
+    </script>
+    {% endif %}
+    <script src="../static/JavaScript/user_data.js"></script>
+    <script src="../static/JavaScript/logout.js"></script>
+  </body>
+</html>

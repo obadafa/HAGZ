@@ -8,16 +8,17 @@ body {
   background-color: #f2f4f7;
   font-family: Arial, sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center; 
-  min-height: 100vh; 
+  align-items: center;
+  min-height: 100vh;
   background-image: url(../img/background1.jpg);
   background-size: cover;
 }
 
 .container {
-  max-width: 400px; 
-  width: 100%; 
+  max-width: 400px;
+  width: 100%;
   padding: 20px;
   background: white;
   border-radius: 8px;
@@ -49,24 +50,31 @@ label {
 }
 
 .form-control:focus {
-  border-color: #539a46;
+  border-color: #28a745;
   outline: none;
 }
 
 .user-type {
   display: flex;
-  align-items: center; 
+  align-items: center;
   margin-bottom: 15px;
+  gap: 2rem;
 }
 
 .form-check {
-  margin-right: 20px; 
+  margin-right: 20px;
+}
+
+.form-check-inline {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .btn {
   width: 100%;
   padding: 10px;
-  background-color: #539a46;
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
@@ -75,7 +83,7 @@ label {
 }
 
 .btn:hover {
-  background-color: #84c479;
+  background-color: #218838;
 }
 
 .account-link {
@@ -84,10 +92,20 @@ label {
 }
 
 .account-link a {
-  color: #539a46;
+  color: #28a745;
   text-decoration: none;
 }
 
 .account-link a:hover {
   text-decoration: underline;
+}
+
+.message {
+  background-color: #d78179;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 19px;
+  border: 2px rgb(131, 12, 12) solid;
 }

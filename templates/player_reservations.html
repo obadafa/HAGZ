@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Reservations</title>
+    <link rel="stylesheet" href="/static/Css/admin_reservations.css" />
+  </head>
+  <body>
+    {% if message %}
+    <div class="message">
+      <p>{{ message }}</p>
+    </div>
+    {% endif %}
+    <div class="button-container">
+      <a href="/player_dashboard" class="back-button">Back to Dashboard</a>
+    </div>
+    <div class="container">
+      <h1>My Reservations</h1>
+      {% if reservations_table %}
+      <table>
+        <thead>
+          <tr>
+            <th>Reservation ID</th>
+            <th>Football Field</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reservation in reservations_table %}
+          <tr>
+            <td>{{ reservation[0] }}</td>
+            <td>{{ reservation[1] }}</td>
+            <td>{{ reservation[4] }}</td>
+            <td>{{ reservation[3] }}:00 - {{ reservation[3] + 1 }}:00</td>
+            <td>{{ reservation[5] }}</td>
+            <td>
+              <form
+                action="{{ url_for('delete_my_reservation', id=reservation[0]) }}"
+                method="POST"
+              >
+                <button class="delete-btn">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>You have no reservations.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Dashboard</title>
+    <link rel="stylesheet" href="../static/Css/player_dashboard.css" />
+  </head>
+  <body>
+    <div class="main-div">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+          <li><a href="player_reservations">My Reservations</a></li>
+          <li><a href="logout" class="logout">Log Out</a></li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+
+      <div class="main-content">
+        <header>
+          <h1 class="name_title"></h1>
+        </header>
+
+        <!-- Search Input and Button -->
+        <form class="form" method="POST" action="/search">
+          <div class="search-section">
+            <input
+              type="text"
+              id="search-field"
+              name="search_field"
+              placeholder="Search for a football field by location"
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+        <!-- Content area, can be filled with search results or other info -->
+        <div class="content">
+          <h2>Explore Football Fields</h2>
+          <div
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <!-- <script
+              src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+              type="module"
+            ></script>
+
+            <dotlottie-player
+              src="https://lottie.host/1e433984-acc2-4564-bfc6-07ad301d71d6/WmtEDZOpMQ.json"
+              background="transparent"
+              speed="1"
+              style="width: 300px; height: 300px"
+              loop
+              autoplay
+            ></dotlottie-player> -->
+          </div>
+          {% if football_fields_array | length > 0 %} {% for football_field in
+          football_fields_array %}
+          <div class="card">
+            <img
+              src="{{football_field[5]}}"
+              alt="Football Field Image"
+              class="field-img"
+            />
+            <div class="card-body">
+              <h3 class="field-name">{{football_field[2]}}</h3>
+              <p class="location">Location: {{football_field[3]}}</p>
+              <a href="{{football_field[4]}}" class="map-link" target="_blank"
+                >View on Map</a
+              >
+              <div class="button">
+                <a
+                  href="{{ url_for('book', field_name=football_field[2]) }}"
+                  class="btn"
+                  >Book</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Add more cards for more football fields -->
+          {% endfor %} {% else %}
+          <p>There is no football field at this location!</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if user %}
+    <script>
+      localStorage.setItem("id", "{{ user[0] }}");
+      localStorage.setItem("name", "{{ user[1] }}");
+      localStorage.setItem("email", "{{ user[2] }}");
+      localStorage.setItem("status", "{{ user[4] }}");
+      localStorage.setItem("login", "true");
+    </script>
+    {% endif %}
+    <script src="../static/JavaScript/user_data.js"></script>
+    <script src="../static/JavaScript/logout.js"></script>
+  </body>
+</html>

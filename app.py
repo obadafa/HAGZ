@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, current_app
 from user import User, user_search
 from football_field import FootballField, get_football_fields_db
+from werkzeug.utils import secure_filename
 from reservation import *
 from talk_to_text_file import *
 
@@ -18,7 +19,6 @@ def get_html(page_name):
 
 #1 route to homepage.
 @app.route("/", methods=["GET","POST"])
-@app.route("/homepage", methods=["GET","POST"])
 def home_page():
     if is_login(): 
         user_info = get_user_info()
@@ -115,11 +115,20 @@ def football_field_data():
                 field_name = request.form.get('field_name')
                 location = request.form.get('location')
                 map_link = request.form.get('map_link')
-                image = request.form.get('image')
-                
-                if image == "":
-                    image = "./static/img/football_field_profile.jpg"
-                football_field = FootballField(field_name, user_info[0], location, map_link, image)
+                image = request.files.get('image')
+    
+                if image:
+                    image_file_name = f"{secure_filename(image.filename)}"
+                    dir = os.path.join(current_app.root_path, './static/img')
+                    image_path = os.path.join(dir, image_file_name)
+                    image.save(image_path)
+                # elif image == "":
+                #     image = "./static/img/football_field_profile.jpg"
+                print(image)
+                print(image_file_name)
+                print(dir)
+                print(image_path)
+                football_field = FootballField(field_name, user_info[0], location, map_link, str(image_file_name))
                 index_html = football_field.set_football_field()
                 return index_html
             except:
@@ -209,7 +218,7 @@ def delete_reservations(id):
         if user_info[1] == "admin":
             update_reservation(id)
             reservations_table = get_reservations_table(user_info[0])
-            return render_template('admin_reservations.html', reservations_table = reservations_table, message = 'Reservation canceled successfully')
+            return render_template('admin_reservations.html', reservations_table = reservations_table, message = 'Reservation cancelled successfully')
         else:
             return render_template(f"{user_info[1]}_dashboard.html")
     else:
@@ -235,8 +244,8 @@ def delete_my_reservation(id):
         user_info = get_user_info()
         if user_info[1] == "player":
             delete_reservation(id)
-            reservations_table = get_my_reservations_table(user_info[0])
-            return render_template('player_reservations.html', reservations_table = reservations_table, message = 'Reservation canceled successfully')
+            reservations_table = list(filter(lambda x: x != [], get_my_reservations_table(user_info[0])))
+            return render_template('player_reservations.html', reservations_table = reservations_table, message = 'Reservation deleted successfully')
         else:
             return render_template(f"{user_info[1]}_dashboard.html")
     else:
@@ -247,7 +256,7 @@ def delete_my_reservation(id):
 def logout():
     if is_login():
         logedout()
-    return get_html("./templates/homepage")
+    return redirect("/")
 
 #19 If the user inputs something invalid route.
 @app.errorhandler(404)

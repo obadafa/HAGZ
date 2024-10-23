@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Football Field</title>
+    <link rel="stylesheet" href="../static/Css/book.css" />
+  </head>
+  <body>
+    <div class="booking-form">
+      <h2>Book a Football Field</h2>
+      <form action="/submit_booking" method="POST">
+        <div class="form-group">
+          <label for="date">Select Date:</label>
+          <input type="date" class="date" id="date" name="date" required />
+        </div>
+
+        <div class="form-group">
+          <label for="time">Select Time:</label>
+          <div class="time"></div>
+        </div>
+        <input type="hidden" name="selected_date" id="selected_date" />
+        <input type="hidden" name="selected_time" id="selected_time" />
+        <input
+          type="hidden"
+          id="football_field_name"
+          name="football_field_name"
+          value="{{football_field_name}}"
+        />
+        <div class="form-group">
+          <input type="submit" value="Book Now" />
+        </div>
+      </form>
+    </div>
+    <script
+      data-reservations="{{reservations_data}}"
+      src="{{url_for('static',filename='JavaScript/time.js')}}"
+    ></script>
+  </body>
+</html>

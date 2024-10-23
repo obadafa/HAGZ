@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/Css/add_football_field.css" />
+    <title>Add Football Field</title>
+  </head>
+  <body>
+    {% if message %}
+    <di class="message">
+      <p>{{ message }}</p>
+    </di>
+    {% endif %}
+    <div class="form-container">
+      <h2>Add Football Field</h2>
+      <form
+        class="form"
+        method="POST"
+        action="/football_field_data"
+        enctype="multipart/form-data"
+      >
+        <label for="field-name"> Name:</label>
+        <input type="text" id="field-name" name="field_name" required />
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required />
+
+        <label for="map-link">Map Link:</label>
+        <input type="url" id="map-link" name="map_link" required />
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" />
+
+        <input type="hidden" id="admin-id" />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
