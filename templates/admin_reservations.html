@@ -32,8 +32,7 @@
         </thead>
         <tbody>
           <!-- Reservations data dynamically -->
-          {% for reservations in reservations_table %} 
-          {% if reservations %} {% for reservation in reservations %}
+          {% for reservation in reservations_table %}
           <tr>
             <td>{{ reservation[0] }}</td>
             <td>{{ reservation[1] }}</td>
@@ -50,13 +49,11 @@
               </form>
             </td>
           </tr>
-          {% endfor %} 
-          {% endif %} 
           {% endfor %}
         </tbody>
       </table>
       {% else %}
-      <p>There are no reservations.</p>
+      <p class="empty-reservations">There are no reservations</p>
       {% endif %}
     </div>
   </body>

@@ -1,7 +1,7 @@
 import mysql.connector
 from models.database import mysql_config
 
-def set_batabase(query, values):
+def set_database(query, values):
     try:
         db = mysql.connector.connect(**mysql_config)
         #A cursor is an object that allows you to interact with the database.
@@ -14,7 +14,7 @@ def set_batabase(query, values):
     finally:
         cursor.close()
 
-def get_batabase(query):
+def get_database(query):
     try:
         db = mysql.connector.connect(**mysql_config)
         #A cursor is an object that allows you to interact with the database.
@@ -29,20 +29,7 @@ def get_batabase(query):
         cursor.close()
 
 
-def update_database(query):
-    try:
-        db = mysql.connector.connect(**mysql_config)
-        #A cursor is an object that allows you to interact with the database.
-        #  It acts as a pointer to the result set of a query
-        cursor = db.cursor()
-        cursor.execute(query)
-        db.commit()
-    except Exception as e:
-        print(e)
-    finally:
-        cursor.close()
-
-def delete_database(query): 
+def edit_database(query):
     try:
         db = mysql.connector.connect(**mysql_config)
         #A cursor is an object that allows you to interact with the database.

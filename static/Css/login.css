@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  margin-top: 30px;
+  margin-top: 90px;
   max-width: 400px;
   width: 100%;
   padding: 20px;
@@ -92,4 +92,59 @@ label {
   margin-bottom: 19px;
   margin-top: 0px;
   border: 2px rgb(131, 12, 12) solid;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .form-control {
+    padding: 8px;
+    font-size: 1em;
+  }
+
+  .btn {
+    padding: 8px;
+    font-size: 1em;
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .form-control {
+    padding: 7px;
+    font-size: 0.9em;
+  }
+
+  .btn {
+    padding: 7px;
+    font-size: 0.9em;
+  }
+
+  .message {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .account-link {
+    font-size: 0.9em;
+  }
 }

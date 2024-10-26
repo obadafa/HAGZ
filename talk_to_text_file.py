@@ -6,9 +6,6 @@ def get_user_info():
         user_info = file.readline()
         file.close()
         user = user_info.split('$$$')
-    else:
-        file = open("user_info.txt", "x")
-        file.close()
     return user
 
 def set_user_info(user_id, user_status):

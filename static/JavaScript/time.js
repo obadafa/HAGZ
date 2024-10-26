@@ -12,6 +12,8 @@ let reservations_data = JSON.parse(
   document.currentScript.dataset.reservations.replaceAll("'", '"')
 );
 
+console.log(reservations_data);
+
 date.addEventListener("change", function () {
   const selectedDate = document.getElementById("selected_date");
   selectedDate.value = date.value;
@@ -33,10 +35,17 @@ date.addEventListener("change", function () {
   // Sort the reservations by time slots.
   reservations_of_selected_date.sort((res1, res2) => res1[3] - res2[3]);
 
-  console.log(reservations_of_selected_date);
+  // for to create the slots dynamically.
   for (let i = 7; i < 22; ++i) {
-    console.log(timeDiv);
+    // If we have two resevations at same time.
+    while (
+      unclickable_buttons_postion < reservations_of_selected_date.length &&
+      reservations_of_selected_date[unclickable_buttons_postion][3] < i
+    ) {
+      ++unclickable_buttons_postion;
+    }
     if (date.value == today && hours > i) {
+      //time passed slots.
       timeDiv += ` <button type="button" class="btn unavailable" id = ${i}  disabled>${i}:00 - ${
         i + 1
       }:00</button>`;
@@ -50,6 +59,7 @@ date.addEventListener("change", function () {
       unclickable_buttons_postion < reservations_of_selected_date.length
     ) {
       if (reservations_of_selected_date[unclickable_buttons_postion][3] == i) {
+        //Reservations related to the logged-in player.
         if (
           reservations_of_selected_date[unclickable_buttons_postion][2] ==
           player_id
@@ -58,7 +68,6 @@ date.addEventListener("change", function () {
             reservations_of_selected_date[unclickable_buttons_postion][5] ==
             "confirmed"
           ) {
-            console.log("hi");
             timeDiv += ` <button type="button" class="btn confirmed" id = ${i}  disabled>${i}:00 - ${
               i + 1
             }:00</button>`;
@@ -68,6 +77,7 @@ date.addEventListener("change", function () {
             }:00</button>`;
           }
         } else {
+          //The reservations are not associated with the logged-in player.
           if (
             reservations_of_selected_date[unclickable_buttons_postion][5] ==
             "confirmed"
@@ -83,11 +93,13 @@ date.addEventListener("change", function () {
         }
         ++unclickable_buttons_postion;
       } else {
+        //The Available slots.
         timeDiv += ` <button type="button" class="btn available" id = ${i}>${i}:00 - ${
           i + 1
         }:00</button>`;
       }
     } else if (date.value != "") {
+      //The Available slots.
       timeDiv += ` <button type="button" class="btn available" id = ${i} >${i}:00 - ${
         i + 1
       }:00</button>`;
@@ -96,7 +108,6 @@ date.addEventListener("change", function () {
   time.innerHTML = timeDiv;
 
   const btns = document.querySelectorAll(".btn");
-
   let currentSelected = null;
 
   btns.forEach((btn) => {

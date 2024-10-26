@@ -33,7 +33,6 @@ p {
   margin-bottom: 20px;
 }
 
-
 .button-container {
   text-align: center;
 }
@@ -51,4 +50,47 @@ p {
 
 .back-button:hover {
   background-color: #218838;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .confirmation-box {
+    padding: 30px; /* Reduced padding for smaller screens */
+  }
+
+  h1 {
+    font-size: 22px; /* Slightly smaller heading */
+  }
+
+  p {
+    font-size: 14px; /* Slightly smaller paragraph text */
+  }
+
+  .back-button {
+    padding: 8px 16px; /* Reduced padding on button */
+    font-size: 14px; /* Slightly smaller font size */
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .confirmation-box {
+    padding: 20px; /* Further reduced padding */
+    max-width: 90%; /* Allow box to take more width */
+  }
+
+  h1 {
+    font-size: 20px; /* Smaller heading for mobile */
+  }
+
+  p {
+    font-size: 12px; /* Smaller paragraph text */
+  }
+
+  .back-button {
+    padding: 6px 12px; /* Reduced padding on button */
+    font-size: 12px; /* Smaller font size */
+  }
 }

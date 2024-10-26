@@ -95,6 +95,8 @@ body {
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 }
 
 .field-img {
@@ -106,7 +108,24 @@ body {
 }
 
 .card-body {
-  flex: 1;
+  padding-right: 60px;
+}
+
+.dis-flex-bet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px;
+  color: rgb(104, 104, 104);
+}
+.dis-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+}
+.margin {
+  margin: 1rem;
 }
 
 .field-name {
@@ -145,4 +164,90 @@ body {
 
 .button .btn:hover {
   background-color: #218838;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .main-div {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+
+  .search-section input[type="text"] {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .field-img {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .field-name {
+    font-size: 18px;
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .name_title {
+    font-size: 20px;
+  }
+
+  .search-section input[type="text"] {
+    font-size: 14px;
+  }
+
+  .search-section button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .field-name {
+    font-size: 16px;
+  }
+
+  .location {
+    font-size: 14px;
+  }
+
+  .map-link {
+    font-size: 14px;
+  }
+
+  .button .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
 }

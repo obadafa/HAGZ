@@ -21,7 +21,7 @@ class User:
     # read usernames and passwords
     def does_user_exist(self):
         query =f"SELECT * FROM HAGZ.user"
-        users = get_batabase(query)
+        users = get_database(query)
         for user in users:
             if (self.email == user[2]):
                 if(check_password_hash(user[3], self.password)):
@@ -34,7 +34,7 @@ class User:
         hashed_password = generate_password_hash(self.password)
         query = f"INSERT INTO HAGZ.user (name, email, password, status) VALUES (%s, %s, %s, %s);"
         values = (self.name, self.email, hashed_password, self.status)
-        set_batabase(query, values)
+        set_database(query, values)
     
 
     # sign in function
@@ -64,5 +64,5 @@ class User:
     
 def user_search(football_field_location):
     query =f"SELECT * FROM HAGZ.football_field WHERE location = '{football_field_location}';"
-    football_fields = get_batabase(query)
+    football_fields = get_database(query)
     return football_fields

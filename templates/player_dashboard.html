@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Player Dashboard</title>
     <link rel="stylesheet" href="../static/Css/player_dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
     <div class="main-div">
@@ -39,10 +43,11 @@
         <!-- Content area, can be filled with search results or other info -->
         <div class="content">
           <h2>Explore Football Fields</h2>
+          {% if not football_fields_array | length > 0 %}
           <div
             style="display: flex; justify-content: center; align-items: center"
           >
-            <!-- <script
+            <script
               src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
               type="module"
             ></script>
@@ -51,16 +56,16 @@
               src="https://lottie.host/1e433984-acc2-4564-bfc6-07ad301d71d6/WmtEDZOpMQ.json"
               background="transparent"
               speed="1"
-              style="width: 300px; height: 300px"
+              style="width: 350px; height: 350px"
               loop
               autoplay
-            ></dotlottie-player> -->
+            ></dotlottie-player>
           </div>
-          {% if football_fields_array | length > 0 %} {% for football_field in
+          {% elif football_fields_array | length > 0 %} {% for football_field in
           football_fields_array %}
           <div class="card">
             <img
-              src="{{football_field[5]}}"
+              src="../static/img/{{football_field[5]}}"
               alt="Football Field Image"
               class="field-img"
             />
@@ -76,6 +81,28 @@
                   class="btn"
                   >Book</a
                 >
+              </div>
+            </div>
+            <div class="football-field-details" style="font-size: 16px">
+              <div class="dis-flex-bet">
+                <div class="dis-flex-center">
+                  <i class="margin fa-solid fa-car"> </i>
+                  <p>Parking</p>
+                </div>
+                <div class="dis-flex-center">
+                  <i class="fa-regular fa-futbol"> </i>
+                  <p class="margin">Ball Renting</p>
+                </div>
+              </div>
+              <div class="dis-flex-bet">
+                <div class="dis-flex-center">
+                  <i class="margin fa-solid fa-toilet"></i>
+                  <p class="">Toilats</p>
+                </div>
+                <div class="dis-flex-center">
+                  <i class="fa-solid fa-mug-saucer"> </i>
+                  <p class="margin">Cafeteria</p>
+                </div>
               </div>
             </div>
           </div>

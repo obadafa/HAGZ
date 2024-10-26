@@ -72,3 +72,77 @@ p {
 .back-button:hover {
   background-color: #218838;
 }
+
+.empty-reservations {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: red;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  table th,
+  table td {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .delete-btn {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+
+  .back-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  table th,
+  table td {
+    padding: 4px;
+  }
+
+  .delete-btn {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+
+  .back-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

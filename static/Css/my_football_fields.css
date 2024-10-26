@@ -117,3 +117,70 @@ body {
 .margin {
   margin: 1rem;
 }
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .fields-container {
+    padding: 10px;
+  }
+
+  .card {
+    width: 80%;
+    margin: 10px;
+  }
+
+  .field-name {
+    font-size: 1.3em;
+  }
+
+  .location,
+  .football-field-details {
+    font-size: 14px;
+  }
+
+  .back-button {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8em;
+  }
+
+  .fields-container {
+    padding: 5px;
+  }
+
+  .card {
+    width: 90%;
+    margin: 5px;
+  }
+
+  .field-img {
+    height: 150px;
+  }
+
+  .field-name {
+    font-size: 1.2em;
+  }
+
+  .location,
+  .football-field-details {
+    font-size: 12px;
+  }
+
+  .back-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .message {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+}

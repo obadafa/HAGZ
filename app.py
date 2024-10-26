@@ -117,19 +117,17 @@ def football_field_data():
                 map_link = request.form.get('map_link')
                 image = request.files.get('image')
     
-                if image:
+                if image and image.filename != '':
                     image_file_name = f"{secure_filename(image.filename)}"
                     dir = os.path.join(current_app.root_path, './static/img')
                     image_path = os.path.join(dir, image_file_name)
                     image.save(image_path)
-                # elif image == "":
-                #     image = "./static/img/football_field_profile.jpg"
-                print(image)
-                print(image_file_name)
-                print(dir)
-                print(image_path)
+                else:
+                    image_file_name = "football_field_profile.jpg"
+
                 football_field = FootballField(field_name, user_info[0], location, map_link, str(image_file_name))
                 index_html = football_field.set_football_field()
+                
                 return index_html
             except:
                 return render_template("add_football_field.html")
@@ -203,8 +201,8 @@ def see_reservation():
         user_info = get_user_info()
         if user_info[1] == "admin":
             reservations_table = get_reservations_table(user_info[0])
-            print(reservations_table)
-            return render_template('admin_reservations.html', reservations_table = reservations_table)
+            reservations_table_final = [res for sub in reservations_table for res in sub]
+            return render_template('admin_reservations.html', reservations_table = reservations_table_final)
         else:
             return render_template(f"{user_info[1]}_dashboard.html")
     else:

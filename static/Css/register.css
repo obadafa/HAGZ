@@ -109,3 +109,56 @@ label {
   margin-bottom: 19px;
   border: 2px rgb(131, 12, 12) solid;
 }
+
+/* Responsive Styles */
+
+/* Tablets and Small Screens (up to 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .form-control {
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 8px;
+  }
+
+  .account-link {
+    margin-top: 15px;
+  }
+}
+
+/* Mobile Screens (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .form-control {
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .account-link {
+    font-size: 14px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}
