@@ -261,5 +261,5 @@ def logout():
 def page_not_found(e):
     if is_login():
         user_info = get_user_info()
-        return render_template(f"{user_info[1]}_dashboard.html")
-    return render_template("login.html")
+        return redirect(f"/{user_info[1]}_dashboard")
+    return redirect("/login")

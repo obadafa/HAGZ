@@ -100,7 +100,7 @@ tr:nth-child(even) {
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-  color: red;
+  color: gray;
 }
 
 /* Responsive Styles */
