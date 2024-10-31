@@ -1,6 +1,6 @@
 from flask import render_template
-from talk_to_database import *
-from talk_to_text_file import *
+from app.api.api import *
+from app.auth.auth import *
 
 class FootballField:
     name = ""

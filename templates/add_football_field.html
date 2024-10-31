@@ -30,7 +30,14 @@
         <input type="text" id="location" name="location" required />
 
         <label for="map-link">Map Link:</label>
-        <input type="url" id="map-link" name="map_link" required />
+        <input
+          type="url"
+          id="map-link"
+          name="map_link"
+          pattern="^https:\/\/(www\.)?google\.[a-z.]{2,6}\/maps(\/place|\/search)?\/?.+$"
+          title="Please enter a valid Google Maps link"
+          required
+        />
 
         <label for="image">Upload Image:</label>
         <input type="file" id="image" name="image" />

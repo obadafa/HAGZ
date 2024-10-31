@@ -42,7 +42,7 @@
             class="form-control"
             id="password"
             name="password"
-            regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
             required
           />
           <p id="message"></p>
@@ -86,21 +86,5 @@
         Already have an account? <a href="/signin">Log in here</a>.
       </p>
     </div>
-    <script>
-      document.getElementById("form").addEventListener("submit", function (e) {
-        e.preventDefault();
-        console.log(document.getElementById("form"))
-        let password = document.getElementById("password").value;
-        let passwordPattern =
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-
-        if (passwordPattern.test(password)) {
-          document.getElementById("message").innerText = "Password is valid!";
-        } else {
-          document.getElementById("message").innerText =
-            "Password is invalid! It must be at least 8 characters long, and include uppercase, lowercase, digit, and special character.";
-        }
-      });
-    </script>
   </body>
 </html>

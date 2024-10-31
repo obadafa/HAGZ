@@ -1,4 +1,5 @@
 import os
+from flask import session
 
 def get_user_info():
     if os.path.exists('user_info.txt'):
@@ -14,7 +15,11 @@ def set_user_info(user_id, user_status):
     file.close()
 
 def is_login():
-    return os.path.exists("user_info.txt")
+    email = session.get('email') 
+    if email:
+        return True
+    return False
 
 def logedout():
     os.remove("user_info.txt")
+    session.pop('email', None)

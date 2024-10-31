@@ -1,7 +1,7 @@
-from flask import render_template
+from flask import render_template, session
 from werkzeug.security import check_password_hash, generate_password_hash
-from talk_to_database import *
-from talk_to_text_file import *
+from app.api.api import *
+from app.auth.auth import *
 
 
 class User:
@@ -42,6 +42,7 @@ class User:
         user = self.does_user_exist()
         if user != 0 and user != -1:
             set_user_info(str(user[0]), user[4])
+            session['email'] = user[2]
             return user
         else:
             return False
@@ -55,6 +56,7 @@ class User:
                 self.add_user_to_database()
                 user = self.does_user_exist()
                 set_user_info(str(user[0]), user[4])
+                session['email'] = user[2]
                 index_html = render_template(f'{self.status}_dashboard.html', user = user, message="You have been Sign Up successfully")
             else:
                 index_html = render_template('register.html', message="This Email already exists")

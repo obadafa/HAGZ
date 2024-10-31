@@ -136,8 +136,8 @@ body {
 }
 
 .back-button {
-  background-color: #27ae60;
-  color: white;
+  background-color: white;
+  color: #27ae60;
   cursor: pointer;
   transition: background-color 0.3s; /* important and beautiful */
   width: 95%;
@@ -152,7 +152,8 @@ body {
 }
 
 .back-button:hover {
-  background-color: #2ecc71;
+  background-color: gray;
+  color: white;
 }
 
 /* Responsive Styles */

@@ -1,5 +1,10 @@
 import mysql.connector
-from models.database import mysql_config
+mysql_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': '123456789',
+    'database': 'hagz'
+}
 
 def set_database(query, values):
     try:
